@@ -3,10 +3,6 @@
  const list = document.querySelector('.list');
 
 
-
-
-
-
  form.addEventListener('submit', function(event){
     event.preventDefault();
    
@@ -55,8 +51,19 @@
   
    if(event.target.classList.contains('delete-btn')){
     const toBeDeleted = event.target.parentElement;
-   
-    list.removeChild(toBeDeleted);
+    const userList = Array.from(list.children);
+    const index = userList.indexOf(toBeDeleted);
+
+    
+
+    const users = JSON.parse(localStorage.getItem('Users')) || [];
+
+    if(index > -1){
+        users.splice(index, 1);
+        list.removeChild(toBeDeleted);
+    }
+    localStorage.setItem('Users', JSON.stringify(users));
+
     
    }
  })
