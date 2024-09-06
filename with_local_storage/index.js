@@ -68,6 +68,28 @@
    }
  })
 
+ list.addEventListener('click', function(event){
+    event.preventDefault();
+
+    if(event.target.classList.contains('edit-btn')){
+        const toBeEdited = event.target.parentElement;
+        const userList = Array.from(list.children);
+        const index = userList.indexOf(toBeEdited);
+
+        const users = JSON.parse(localStorage.getItem('Users')) || [];
+
+        const user = users[index];
+        document.getElementById('name').value = user.name;
+        document.getElementById('email').value = user.email;
+        document.getElementById('phone').value = user.phone;
+
+        list.removeChild(toBeEdited);
+        users.splice(index, 1);
+
+        localStorage.setItem('Users', JSON.stringify(users));
+    }
+ })
+
 //  document.getElementById('filter').addEventListener('input', function(event){
 //     event.preventDefault();
 
