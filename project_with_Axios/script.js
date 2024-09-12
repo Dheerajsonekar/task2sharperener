@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
 const list = document.querySelector('.list');
 
-const api_url = "https://crudcrud.com/api/1c1a9a9743ba4530850e3add62ab4d3d/appointmentData";
+const api_url = "https://crudcrud.com/api/6a8ea084909a4923bf38a294b2c06f42/appointmentData";
 
 form.addEventListener('submit', function(event){
     event.preventDefault();
@@ -45,7 +45,28 @@ window.addEventListener("DOMContentLoaded", () =>{
 
 function showUserOnScreen(user){
     const newList = document.createElement('li');
+
+    newList.setAttribute('data-id', user._id);
+
     newList.innerHTML = user.name +" "+user.email +" "+user.phone +" " +'<button class="delete-btn">Delete button</button>' +" "+'<button class="edit-btn">Edit button</button>';
     list.appendChild(newList);
+
+
+    list.addEventListener('click', function(event){
+        event.preventDefault();
+    
+        if(event.target.classList.contains('delete-btn')){
+            const toDelete = event.target.parentElement;
+            const userID = toDelete.getAttribute('data-id');
+            axios.delete(`${api_url}/${userID}`)
+            .then((response)=>{
+               console.log('Data Deleted');
+               list.removeChild(toDelete);
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        }
+    })
 }
 
