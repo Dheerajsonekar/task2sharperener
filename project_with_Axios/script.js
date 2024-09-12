@@ -32,12 +32,11 @@ form.addEventListener('submit', function(event){
     form.reset();
 })
 
-window.addEventListener('DOMContentLoaded', () =>{
+window.addEventListener("DOMContentLoaded", () =>{
+   
     const data = axios.get(api_url)
     .then((response)=>{
-        for(let i=0; i<response.data.length; i++){
-            showUserOnScreen(response.data[i]);
-        }
+        response.data.forEach(user=> showUserOnScreen(user));
     })
     .catch((err)=>{
         console.log(err);
