@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+       <div class="main">
+        <div class="zero">
+            <h2>Total Vote</h2>
+            <span id="text">Total Vote: </span>
+            <span id="voteCount">0</span>
+            <br><br><br><br>
+        </div>
+        <div class="first">
+            <form >
+                <label for="name"> Voter Name:</label>
+                <input type="text" id="name" name="name"/>
+                <label for="selectOption">Choose Monitor:</label>
+                <select  id="selectOption">
+                    <option value="ram">Ram</option>
+                    <option value="shiv">Shiv</option>
+                    <option value="shyam">Shyam</option>
+                </select>
+
+                <button type="submit">Vote</button>
+            </form>
+            <br><br>
+        </div>
+        <div class="second">
+            <h2>Ram</h2>
+            <span id="text1">Vote Count: </span>
+            <span id="voteCount1">0</span>
+            
+             <ul class="ramList"></ul>
+        </div>
+        <div class="third">
+            <h2>Shiv</h2>
+            <span id="text2">Vote Count: </span>
+            <span id="voteCount2">0</span>
+            
+            <ul class="shivList"></ul>
+        </div>
+        <div class="fourth">
+            <h2>Shyam</h2>
+            
+            <span id="text3">Vote Count: </span>
+            <span id="voteCount3">0</span>
+            
+            <ul class="shyamList"></ul>
+        </div>
+       </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+        <script src="script.js" async defer></script>
+    </body>
+</html>
